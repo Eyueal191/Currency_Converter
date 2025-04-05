@@ -1,11 +1,6 @@
-# Currency_Converter
-Here's a sample README for your Currency Converter application:
-
----
-
 # Currency Converter
 
-This is a simple **Currency Converter** application built with **React**. It allows users to convert an amount of one currency to another using real-time exchange rates from the **ExchangeRate-API**.
+This is a simple **Currency Converter** application built with **React**. It allows users to convert an amount of one currency to another using real-time exchange rates from the and Show the real-time exchange rates from the **ExchangeRate-API**.
 
 ## Features
 
