@@ -107,7 +107,3 @@ The app supports the following currencies:
 
 - If you encounter an error like "Failed to load exchange rates," it could be due to a problem with the **ExchangeRate-API** service. Please check their [API documentation](https://www.exchangerate-api.com/docs) for further details.
 - If the app doesn't load or crashes, try checking the **console logs** for more information on what went wrong.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
