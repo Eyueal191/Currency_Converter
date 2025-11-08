@@ -30,7 +30,7 @@ function App() {
     "CNY_Chinese Yuan",
     "DKK_Danish Krone",
     "EGP_Egyptian Pound",
-    "ETB_Ethiopian Birr", // ✅ Added here
+    "ETB_Ethiopian Birr",
     "EUR_Euro",
     "GBP_British Pound Sterling",
     "HKD_Hong Kong Dollar",
@@ -55,7 +55,7 @@ function App() {
     "ZAR_South African Rand",
   ];
 
-  const currencyOptions = availableCurrency.map((currency, index) => {
+  const currencyOptions = availableCurrency.map((currency) => {
     const [code, name] = currency.split("_");
     return (
       <option value={code} key={code}>
@@ -123,23 +123,25 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f9f9f9]">
-      <header className="bg-[#2b2b2b] text-white flex items-center justify-between p-4 shadow">
+      {/* Header */}
+      <header className="bg-black text-white flex flex-col sm:flex-row items-center justify-between p-4 shadow-md">
         <img
           src="https://i.postimg.cc/8CBRhNb6/c4334ce1-02ae-47ea-a864-370163604484.png"
           alt="Logo"
-          className="w-20 h-20 object-contain rounded"
+          className="w-20 h-20 object-contain rounded mb-2 sm:mb-0"
         />
-        <h1 className="text-3xl font-bold text-center flex-grow">
-          Currency Converter
+        <h1 className="text-2xl sm:text-3xl font-bold text-center flex-grow">
+          Minzare Currency Converter
         </h1>
       </header>
 
-      <main className="flex-grow flex flex-col items-center justify-center p-6">
+      {/* Main */}
+      <main className="flex-grow flex flex-col items-center justify-center p-4 sm:p-6">
         <form
           onSubmit={onSubmitHandler}
-          className="w-full max-w-3xl bg-white p-6 rounded shadow-md"
+          className="w-full max-w-md sm:max-w-3xl bg-white p-6 rounded-lg shadow-lg"
         >
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col">
               <label htmlFor="from-currency" className="mb-2 font-semibold">
                 From Currency:
@@ -147,7 +149,7 @@ function App() {
               <select
                 ref={fromInput}
                 id="from-currency"
-                className="p-2 border rounded"
+                className="p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
                 {currencyOptions}
               </select>
@@ -160,13 +162,13 @@ function App() {
               <select
                 ref={toInput}
                 id="to-currency"
-                className="p-2 border rounded"
+                className="p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
                 {currencyOptions}
               </select>
             </div>
 
-            <div className="flex flex-col md:col-span-2">
+            <div className="flex flex-col col-span-1 sm:col-span-2">
               <label htmlFor="amount" className="mb-2 font-semibold">
                 Amount:
               </label>
@@ -175,48 +177,48 @@ function App() {
                 type="number"
                 id="amount"
                 placeholder="Enter amount"
-                className="p-2 border rounded"
+                className="p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
           </div>
 
-          <div className="flex justify-center mt-6 space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center mt-6 space-y-2 sm:space-y-0 sm:space-x-4">
             <button
               type="submit"
-              className="bg-[#c62828] text-white px-6 py-2 rounded hover:bg-[#b71c1c] transition"
+              className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition shadow-md w-full sm:w-auto"
             >
               {loading ? "Converting..." : "Convert"}
             </button>
             <button
               type="button"
               onClick={onClearHandler}
-              className="bg-[#f57c00] text-white px-6 py-2 rounded hover:bg-[#ef6c00] transition"
+              className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 transition shadow-md w-full sm:w-auto"
             >
               Clear
             </button>
           </div>
         </form>
 
-        {errorMessage && <p className="mt-4 text-red-600">{errorMessage}</p>}
+        {errorMessage && <p className="mt-4 text-red-600 text-center">{errorMessage}</p>}
 
         {convertedAmount && !errorMessage && (
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center bg-white p-4 rounded-lg shadow-md w-full max-w-sm sm:max-w-md">
             <h2 className="text-xl font-semibold">Converted Amount:</h2>
-            <p className="text-lg">
+            <p className="text-lg mt-2">
               {convertedAmount.toFixed(2)} {toCurrency}
             </p>
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm text-gray-500 mt-1">
               1 {fromCurrency} = {exchangeRate.toFixed(4)} {toCurrency}
             </p>
           </div>
         )}
       </main>
 
-      <footer className="bg-[#2b2b2b] text-white text-center py-4">
-        © 2025 Currency Converter
+      {/* Footer */}
+      <footer className="bg-black text-white text-center py-4 shadow-inner mt-auto">
+        © 2025 Minzare Currency Converter
       </footer>
     </div>
   );
 }
-
 export default App;
